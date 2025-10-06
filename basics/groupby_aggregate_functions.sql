@@ -36,3 +36,9 @@ select min(amount), branch from transactions group by branch;
 select count(*), month from transactions group by month having count(*)<6;
 
 select sum(amount), month from transactions group by month;
+
+# Get the month where amount < 11500 with Atlanta and Dallas combined
+select sum(amount), month from transactions where branch = 'Atlanta' or branch = 'Dallas' group by month having sum(amount) < 11500;
+
+# get the branch with sum of amount more than 10000 in December
+select sum(amount), branch from transactions where month = 'December' group by branch having sum(Amount) > 5000;
