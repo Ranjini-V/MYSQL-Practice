@@ -67,3 +67,9 @@ select name, exp from citizens where exp > (select exp from citizens where name 
 
 # List all cities where experience > 10 years
 select location from citizenLoc where name in (select name from citizens where exp in (select exp from citizens where exp > 10));
+
+# Correlated subquery: Get citizens whose experience is greater than the average experience of citizens younger than them
+select c1.name, c1.age, c1.exp from citizens c1 where c1.exp > (select avg(c2.exp) from citizens c2 where c2.age < c1.age);
+
+# Find citizens who live in cities starting with 'S' and have above-average experience.
+select name, exp from citizens where exp > (select avg(exp) from citizens) and name in (select name from citizenLoc where location like 'S%');
