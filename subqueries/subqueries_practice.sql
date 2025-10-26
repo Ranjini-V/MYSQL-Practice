@@ -73,3 +73,6 @@ select c1.name, c1.age, c1.exp from citizens c1 where c1.exp > (select avg(c2.ex
 
 # Find citizens who live in cities starting with 'S' and have above-average experience.
 select name, exp from citizens where exp > (select avg(exp) from citizens) and name in (select name from citizenLoc where location like 'S%');
+
+# Find the city that has the citizen with the highest experience.
+select location from citizenLoc where name = (select name from citizens where name = (select name from citizens where exp = (select max(exp) from citizens)));
