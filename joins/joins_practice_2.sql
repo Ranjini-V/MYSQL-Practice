@@ -34,8 +34,14 @@ select * from company;
 select * from established;
 
 # count of emp of a company established in 2013
-select c.employees, est.year from company as c join established as est on 
- 
+select c.name, c.employees, est.year from company as c join established as est on c.name = est.name where est.year = 2013;
 
+# display all company names and branches that were established before 2012
+select c.name, c.branch, est.year from company as c join established as est on c.name = est.name where est.year < 2012;
 
+# list companies from ‘New York’ and show their year of establishment
+select company.name, established.year from company join established on company.name = established.name where company.branch = 'New York';
+
+# show company name, branch, and employee count for companies established after 2010.
+select c.name, c.branch, c.employees, est.year from company as c join established as est on c.name = est.name where est.year > 2010 ;
 
