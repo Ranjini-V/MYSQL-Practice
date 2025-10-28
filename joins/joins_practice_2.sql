@@ -45,6 +45,8 @@ select company.name, established.year from company join established on company.n
 # show company name, branch, and employee count for companies established after 2010.
 select c.name, c.branch, c.employees, est.year from company as c join established as est on c.name = est.name where est.year > 2010 ;
 
-# find companies where the year of establishment is before 2015 and employees are more than 80.
+# find companies where the year of establishment is before 2015 and employees are more than 80
 select c.name, c.employees, est.year from company as c join established as est on c.name = est.name where est.year >= 2015 and c.employees > 80 ;
 
+# find all companies established after 2010 and having fewer than 100 employees
+select c.name, c.employees, est.year from company as c join established as est on c.name = est.name where est.year > 2010 and c.employees < 100 ;
