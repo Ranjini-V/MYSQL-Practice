@@ -50,3 +50,7 @@ select c.name, c.employees, est.year from company as c join established as est o
 
 # find all companies established after 2010 and having fewer than 100 employees
 select c.name, c.employees, est.year from company as c join established as est on c.name = est.name where est.year > 2010 and c.employees < 100 ;
+
+# get all companies located in 'New York' or 'Chicago' and show their year and employee count
+select c.name, c.branch, est.year, c.employees from company as c join established as est on c.name = est.name where c.branch = 'Chicago' or c.branch = 'New York' ;
+
