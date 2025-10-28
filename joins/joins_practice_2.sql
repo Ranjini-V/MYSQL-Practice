@@ -54,3 +54,5 @@ select c.name, c.employees, est.year from company as c join established as est o
 # get all companies located in 'New York' or 'Chicago' and show their year and employee count
 select c.name, c.branch, est.year, c.employees from company as c join established as est on c.name = est.name where c.branch = 'Chicago' or c.branch = 'New York' ;
 
+# find companies that were established before 2012 and have branch names containing 'a'
+select c.name, c.branch, est.year from company as c join established as est on c.name = est.name where est.year < 2012 and c.branch like '%a%';
