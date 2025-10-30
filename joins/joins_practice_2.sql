@@ -56,3 +56,10 @@ select c.name, c.branch, est.year, c.employees from company as c join establishe
 
 # find companies that were established before 2012 and have branch names containing 'a'
 select c.name, c.branch, est.year from company as c join established as est on c.name = est.name where est.year < 2012 and c.branch like '%a%';
+
+# list companies established between 2010 and 2015 along with their branch and employees
+select c.name, c.branch, c.employees, est.year from company as c join established as est on c.name = est.name where est.year > 2010 and est.year < 2015 ;
+
+# show companies with employee count greater than the average employee count along with their year
+select c.name, c.employees, est.year from company as c join established as est on c.name = est.name where c.employees > (select avg(c.employees) from company as c);
+
