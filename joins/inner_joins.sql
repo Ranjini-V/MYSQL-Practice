@@ -42,3 +42,6 @@ select s.name, e.grade, c.course_name from students as s inner join enrollments 
 
 # find all courses and the names of students taking them
 select s.name, c.course_name from students as s inner join enrollments as e on s.student_id = e.student_id inner join courses as c on c.course_id = e.course_id ;
+
+# find the instructor name along with student names
+select c.tutor, s.name from courses as c inner join enrollments as e on c.course_id = e.course_id inner join students as s on e.student_id = s.student_id ;
