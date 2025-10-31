@@ -37,3 +37,5 @@ select * from enrollments;
 # all students with their enrolled course names
 select s.name, c.course_name from students as s inner join enrollments as e on s.student_id = e.student_id inner join courses as c on c.course_id = e.course_id ;
 
+# show each student’s name along with their grade in every course
+select s.name, e.grade, c.course_name from students as s inner join enrollments as e on s.student_id = e.student_id inner join courses as c on c.course_id = e.course_id ;
