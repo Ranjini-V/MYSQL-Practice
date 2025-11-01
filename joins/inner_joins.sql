@@ -47,5 +47,5 @@ select s.name, c.course_name from students as s inner join enrollments as e on s
 select c.tutor, s.name from courses as c inner join enrollments as e on c.course_id = e.course_id inner join students as s on e.student_id = s.student_id ;
 
 # show the department of each student who is taking 'Database Systems'
-select s.name from courses as c inner join enrollments as e on c.course_id = e.course_id inner join students as s on e.student_id = s.student_id ;
+select s.name from courses as c inner join enrollments as e on c.course_id = e.course_id inner join students as s on e.student_id = s.student_id where c.course_name = "Database Systems" ;
    
