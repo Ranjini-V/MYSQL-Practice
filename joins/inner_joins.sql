@@ -52,3 +52,8 @@ select s.name from courses as c inner join enrollments as e on c.course_id = e.c
 # students who scored grade 'A' in any course
 select s.name, c.course_name, e.grade from students as s inner join enrollments as e on s.student_id = e.student_id inner join courses as c on e.course_id = c.course_id where e.grade = 'A' ;
 
+# names of students enrolled in courses taught by 'Dr. Sen'
+select s.name, c.course_name, c.tutor from students as s inner join enrollments as e on s.student_id = e.student_id inner join courses as c on e.course_id = c.course_id where c.tutor = 'Dr. Sen' ;
+
+# all Computer Science students enrolled in 'Data Structures'
+select s.name, s.department, c.course_name from students as s inner join enrollments as e on s.student_id = e.student_id inner join courses as c on c.course_id = e.course_id where c.course_name = 'Data Structures' ;
