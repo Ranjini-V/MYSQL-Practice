@@ -57,3 +57,9 @@ select s.name, c.course_name, c.tutor from students as s inner join enrollments 
 
 # all Computer Science students enrolled in 'Data Structures'
 select s.name, s.department, c.course_name from students as s inner join enrollments as e on s.student_id = e.student_id inner join courses as c on c.course_id = e.course_id where c.course_name = 'Data Structures' ;
+
+# course names taken by students whose name starts with ‘A’
+select s.name, c.course_name, e.grade from students as s inner join enrollments as e on s.student_id = e.student_id inner join courses as c on c.course_id = e.course_id where s.name like "A%" ;
+
+# courses that have at least one 'Information Technology' student enrolled
+select c.course_name, s.name, s.department from students as s inner join enrollments as e on s.student_id = e.student_id inner join courses as c on c.course_id = e.course_id where s.department = 'Information Technology' ;
