@@ -63,3 +63,8 @@ select s.name, c.course_name, e.grade from students as s inner join enrollments 
 
 # courses that have at least one 'Information Technology' student enrolled
 select c.course_name, s.name, s.department from students as s inner join enrollments as e on s.student_id = e.student_id inner join courses as c on c.course_id = e.course_id where s.department = 'Information Technology' ;
+
+
+# count how many students are enrolled in each course
+select c.course_name, count(s.name) as student_number from courses as c inner join enrollments as e on c.course_id = e.course_id inner join students as s on s.student_id = e.student_id group by c.course_name ;
+
