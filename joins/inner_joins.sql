@@ -72,4 +72,4 @@ select c.course_name, count(s.name) as student_number from courses as c inner jo
 select c.course_name, count(s.name) as student_count from courses as c inner join enrollments as e on c.course_id = e.course_id inner join students as s on e.student_id = s.student_id group by c.course_name ;
 
 # show all students who have enrolled in more than one course
-select c.course_name, s.name from courses as c inner join enrollments as e on c.course_id = e.course_id inner join students as s on e.student_id = s.student_id group by s.name having COUNT(e.course_id) > 1;
+select s.name, count(e.course_id) as number_of_courses from students as s inner join enrollments as e on s.student_id = e.student_id group by s.name having count(e.course_id) > 1; 
