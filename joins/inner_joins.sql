@@ -73,3 +73,6 @@ select c.course_name, count(s.name) as student_count from courses as c inner joi
 
 # show all students who have enrolled in more than one course
 select s.name, count(e.course_id) as number_of_courses from students as s inner join enrollments as e on s.student_id = e.student_id group by s.name having count(e.course_id) > 1; 
+
+# show each student’s average grade converted to numeric values (A=4, B=3, C=2)
+select s.name, avg( case when e.grade = 'A' then 4 when e.grade = 'B' then 3 when e.grade = 'C' then 2 end) AS avg_grade_numeric from students as s inner join enrollments as e on s.student_id = e.student_id group by s.name ;
