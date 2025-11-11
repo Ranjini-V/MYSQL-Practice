@@ -77,5 +77,11 @@ select s.name, count(e.course_id) as number_of_courses from students as s inner 
 # show each student’s average grade converted to numeric values (A=4, B=3, C=2)
 select s.name, avg( case when e.grade = 'A' then 4 when e.grade = 'B' then 3 when e.grade = 'C' then 2 end) AS avg_grade_numeric from students as s inner join enrollments as e on s.student_id = e.student_id group by s.name ;
 
-# the tutor whose course has the most enrollments
-select c.tutor, count(e.student_id) as total_enrollments from courses as c inner join enrollments as e on c.course_id = e.course_id group by c.tutor order by total_enrollments DESC limit 1 ;
+# the 2 tutors whose course has the most enrollments
+select c.tutor, count(e.student_id) as total_enrollments from courses as c inner join enrollments as e on c.course_id = e.course_id group by c.tutor order by total_enrollments DESC limit 2 ;
+
+# show the department-wise count of enrolled students
+select s.department, count(e.student_id) as no_of_enrolled from students as s inner join enrollments as e on s.student_id = e.student_id group by s.department ;
+
+# students who have taken both “Database Systems” and “Data Structures"
+select s.name, c.course_name from students as s inner join enrollments as e on s.student_id = e.student_id inner join courses as c on c.course_id = e.course_id group by c.course_name ;
