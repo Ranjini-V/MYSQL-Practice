@@ -84,4 +84,4 @@ select c.tutor, count(e.student_id) as total_enrollments from courses as c inner
 select s.department, count(e.student_id) as no_of_enrolled from students as s inner join enrollments as e on s.student_id = e.student_id group by s.department ;
 
 # students who have taken both “Database Systems” and “Data Structures"
-select s.name, c.course_name from students as s inner join enrollments as e on s.student_id = e.student_id inner join courses as c on c.course_id = e.course_id group by c.course_name ;
+select s.name from students as s inner join enrollments as e on s.student_id = e.student_id inner join courses as c on c.course_id = e.course_id where c.course_name in ('Database Systems', 'Data Structures') group by s.name having count(distinct c.course_name) = 2 ; 
