@@ -35,3 +35,10 @@ select e.emp_name, d.dept_name from employees as e left join departments as d on
 
 # Show all departments and the employees working in them (including empty departments)
 select d.dept_name, e.emp_name from departments as d left join employees as e on d.dept_id = e.dept_id ;
+
+# List all companies and how many departments they have (including companies with 0 departments)
+select c.company_name, count(d.dept_id) as departments_count from companies as c left join departments as d on c.company_id = d.company_id group by c.company_name ;
+
+# List all companies and how many employees they have
+select c.company_name, count(e.emp_id) as emp_count from companies as c left join departments as d on c.company_id = d.company_id left join employees as e on e.dept_id = d.dept_id group by c.company_name ;
+
