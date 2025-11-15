@@ -18,6 +18,17 @@ INSERT INTO departments VALUES (14, "R&D", 3);
 INSERT INTO departments VALUES (15, "Legal", NULL); 
 SELECT * FROM departments ;
 
+CREATE TABLE employees (emp_id INT, emp_name VARCHAR(30), dept_id INT);
+INSERT INTO employees VALUES (100, "Alice", 10);
+INSERT INTO employees VALUES (101, "Bob", 11);
+INSERT INTO employees VALUES (102, "Charlie", 11); 
+INSERT INTO employees VALUES (103, "David", 12);
+INSERT INTO employees VALUES (104, "Eve", 14);
+INSERT INTO employees VALUES (105, "Frank", NULL);
+SELECT * FROM employees ;
+
+
+
 
 
 
