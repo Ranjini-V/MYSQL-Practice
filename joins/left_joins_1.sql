@@ -53,3 +53,6 @@ select e.emp_id, e.emp_name, d.dept_name, c.company_name from employees as e lef
 
 # List all companies along with total employees in each company; include companies with no employees
 select c.company_name, count(distinct e.emp_id) as emp_count from companies as c left join departments as d on c.company_id = d.company_id left join employees as e on e.dept_id = d.dept_id group by c.company_name ;
+
+# Show departments where employees belong to a different company than the department’s company
+select d.dept_name, e.emp_name, cd.company_name as dept_company, ce.company_name as emp_company from departments as d left join employees as e on d.dept_id = e.dept_id left join companies as cd on d.company_id = cd.company_id left join departments as d2 on e.dept_id = d2.dept_id left join companies as ce on ce.company_id = d2.company_id where cd.company_id <> ce.company_id ;
