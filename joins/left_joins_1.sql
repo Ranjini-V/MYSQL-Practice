@@ -47,3 +47,9 @@ select d.dept_name, count(distinct e.emp_id) as emp_count from departments as d 
 
 # Find companies that have employees in the Engineering department
 select c.company_name, d.dept_name, count(distinct e.emp_id) as emp_count from companies as c left join departments as d on c.company_id = d.company_id left join employees as e on d.dept_id = e.dept_id where d.dept_name = "Engineering" group by c.company_name ;
+
+# Show every employee with the company they belong to (even if department/company is missing)
+select e.emp_id, e.emp_name, d.dept_name, c.company_name from employees as e left join departments as d on e.dept_id = d.dept_id left join companies as c on c.company_id = d.company_id ;
+
+# List all companies along with total employees in each company; include companies with no employees
+select c.company_name, count(distinct e.emp_id) as emp_count from companies as c left join departments as d on c.company_id = d.company_id left join employees as e on e.dept_id = d.dept_id group by c.company_name ;
