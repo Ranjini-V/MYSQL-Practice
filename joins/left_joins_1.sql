@@ -44,3 +44,6 @@ select c.company_name, count(e.emp_id) as emp_count from companies as c left joi
 
 # Find departments where no employees are working
 select d.dept_name, count(distinct e.emp_id) as emp_count from departments as d left join employees as e on d.dept_id = e.dept_id group by d.dept_name having count(distinct e.emp_id) = 0  ; 
+
+# Find companies that have employees in the Engineering department
+select c.company_name, d.dept_name, count(distinct e.emp_id) as emp_count from companies as c left join departments as d on c.company_id = d.company_id left join employees as e on d.dept_id = e.dept_id where d.dept_name = "Engineering" group by c.company_name ;
