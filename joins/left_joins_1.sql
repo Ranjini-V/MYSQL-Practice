@@ -62,3 +62,6 @@ select c.company_name, group_concat(d.dept_name separator ',') as dept_names fro
 
 # Show all employees and whether their department belongs to SkyNet (company_id = 4)
 select e.emp_name, case when c.company_id = 4 then 'YES' else 'NO' end as belongs_to_SkyNet from employees as e left join departments as d on e.dept_id = d.dept_id left join companies as c on d.company_id = c.company_id ;
+
+# List all departments along with total employees, sorted by employee count (include zero)
+select d.dept_name, count(distinct e.emp_id) as emp_count from departments as d left join employees as e on d.dept_id = e.dept_id group by d.dept_name order by count(e.emp_id) ; 
