@@ -61,4 +61,4 @@ select d.dept_name, e.emp_name, cd.company_name as dept_company, ce.company_name
 select c.company_name, group_concat(d.dept_name separator ',') as dept_names from companies as c left join departments as d on c.company_id = d.company_id group by c.company_name ;
 
 # Show all employees and whether their department belongs to SkyNet (company_id = 4)
-select e.emp_name, 
+select e.emp_name, case when c.company_id = 4 then 'YES' else 'NO' end as belongs_to_SkyNet from employees as e left join departments as d on e.dept_id = d.dept_id left join companies as c on d.company_id = c.company_id ;

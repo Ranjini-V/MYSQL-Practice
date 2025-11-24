@@ -13,3 +13,4 @@ select s.department, count(distinct c.course_name) as total_course from students
 
 # List tutors who teach more than one courses
 select c.tutor, count(distinct c.course_id) as course_number from courses as c join enrollments as e on c.course_id = e.course_id group by c.tutor having count(c.course_id) > 1 ;
+
