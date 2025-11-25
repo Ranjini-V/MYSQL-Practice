@@ -14,3 +14,5 @@ select s.department, count(distinct c.course_name) as total_course from students
 # List tutors who teach more than one courses
 select c.tutor, count(distinct c.course_id) as course_number from courses as c join enrollments as e on c.course_id = e.course_id group by c.tutor having count(c.course_id) > 1 ;
 
+# Show all employees who work in a company located in Bangalore
+select e.emp_id, e.emp_name, c.location from employees as e left join departments as d on e.dept_id = d.dept_id left join companies as c on c.company_id = d.company_id where c.location = "Bangalore" ;
