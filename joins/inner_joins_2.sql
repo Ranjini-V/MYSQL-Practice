@@ -20,3 +20,5 @@ select e.emp_id, e.emp_name, c.location from employees as e left join department
 #Show company-wise count of employees working in "Engineering", including if 0
 select c.company_name, count(e.emp_id) as emp_count from companies as c left join departments as d on c.company_id = d.company_id left join employees as e on d.dept_id = e.dept_id group by c.company_name ;
 
+# Show the names of employees who belong to departments not associated with any company
+select e.emp_name, d.dept_name from employees as e inner join departments as d on e.dept_id = d.dept_id where d.company_id is null ;
