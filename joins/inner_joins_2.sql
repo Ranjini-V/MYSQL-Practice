@@ -16,3 +16,7 @@ select c.tutor, count(distinct c.course_id) as course_number from courses as c j
 
 # Show all employees who work in a company located in Bangalore
 select e.emp_id, e.emp_name, c.location from employees as e left join departments as d on e.dept_id = d.dept_id left join companies as c on c.company_id = d.company_id where c.location = "Bangalore" ;
+
+#Show company-wise count of employees working in "Engineering", including if 0
+select c.company_name, count(e.emp_id) as emp_count from companies as c left join departments as d on c.company_id = d.company_id left join employees as e on d.dept_id = e.dept_id group by c.company_name ;
+
