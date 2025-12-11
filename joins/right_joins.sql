@@ -47,6 +47,11 @@ select c.customer_name from orders as o right join customers as c on c.customer_
 # Show customers who ordered more than one distinct product
 select c.customer_name, count(distinct o.product_id) as orders from customers as c right join orders as o on c.customer_id = o.customer_id group by c.customer_name  having count(distinct o.product_id) > 1; 
 
+# List products that were ordered only once across all customers
+select p.product_name, count(distinct o.order_id) as orderedTimes from products as p right join orders as o on p.product_id = o.product_id group by p.product_name having count(distinct o.order_id)= 1 ;
+
+# Show customers who never ordered the product "Keyboard"
+select distinct c.customer_name from customers as c right join orders as o on c.customer_id = o.customer_id right join products as p on p.product_id = o.product_id group by c.customer_id having sum(case when p.product_name = "Keyboard" then 1 else 0 end) = 0 ;
 
 
 
